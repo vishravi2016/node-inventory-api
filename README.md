@@ -3,13 +3,9 @@
 
 A simple Node.js application built using Express.js. This project demonstrates the basic structure of an Express application and can be used as a starting point for building REST APIs, web applications, and CI/CD pipeline demonstrations.
 
-## Features
+## Objective
 
-- Express.js web server
-- Health check endpoint
-- Simple home page endpoint
-- Easy to extend and customize
-- Beginner-friendly project structure
+- Build an automated CI/CD pipeline to containerize and deploy a NodeJS Inventory REST API.
 
 ## Prerequisites
 
@@ -28,10 +24,10 @@ npm -v
 ## Project Structure
 
 ```text
-my-express-app/
+node-inventory-api/
 │
 ├── node_modules/
-├── app.js
+├── server.js
 ├── package.json
 ├── package-lock.json
 └── README.md
@@ -48,7 +44,7 @@ git clone <repository-url>
 Navigate to the project directory:
 
 ```bash
-cd my-express-app
+cd node-inventory-api
 ```
 
 Install dependencies:
@@ -68,7 +64,7 @@ npm start
 Or directly run:
 
 ```bash
-node app.js
+node server.js
 ```
 
 The application will start on:
@@ -77,62 +73,10 @@ The application will start on:
 http://localhost:3000
 ```
 
-## Sample Code
+## Verify API Endpoints
+- GET /health
+- GET /products
 
-```javascript
-const express = require("express");
-
-const app = express();
-const PORT = 3000;
-
-app.get("/", (req, res) => {
-    res.send("Hello Express!");
-});
-
-app.get("/health", (req, res) => {
-    res.json({
-        status: "UP",
-        application: "my-express-app"
-    });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
-```
-
-## API Endpoints
-
-### Home Endpoint
-
-**Request**
-
-```http
-GET /
-```
-
-**Response**
-
-```text
-Hello Express!
-```
-
-### Health Check Endpoint
-
-**Request**
-
-```http
-GET /health
-```
-
-**Response**
-
-```json
-{
-  "status": "UP",
-  "application": "my-express-app"
-}
-```
 
 ## Available Scripts
 
@@ -156,6 +100,71 @@ GET /health
 - Node.js
 - Express.js
 - npm
+
+## Module 2 - Dockerize the Application
+
+Create a "Dockerfile".
+
+Verify:
+
+- Docker image builds successfully.
+- Container starts successfully.
+- Health endpoint is accessible.
+
+---
+
+## Module 3 - Jenkins Pipeline
+
+Create a Declarative "Jenkinsfile".
+
+Pipeline stages:
+
+1. Checkout
+2. Install Dependencies
+3. Docker Build
+4. Docker Push
+
+## Docker image naming:
+
+<dockerhub-username>/node-inventory-api:${BUILD_NUMBER}
+
+---
+
+## Module 4 - Kubernetes Deployment
+
+Create:
+
+- "deployment.yaml"
+- "service.yaml"
+
+Requirements:
+
+- Replicas = 2
+- Service Type = NodePort
+
+## Deploy
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+##Verify
+
+kubectl get pods
+kubectl get svc
+
+---
+
+## Deliverables
+
+- NodeJS Source Code
+- Dockerfile
+- Jenkinsfile
+- deployment.yaml
+- service.yaml
+- Jenkins Success Screenshot
+- Docker Hub Screenshot
+- Kubernetes Pods Screenshot
+- Browser/Postman Output Screenshot 
 
 ## Author
 
