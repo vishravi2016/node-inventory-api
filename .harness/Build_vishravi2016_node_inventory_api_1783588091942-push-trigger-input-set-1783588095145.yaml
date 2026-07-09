@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_vishravi2016_node_inventory_api_1783588091942-push-trigger-input-set
+  identifier: Build_vishravi2016_node_inventory_api_1783588091942pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: mydemos
+  pipeline:
+    identifier: Build_vishravi2016_node_inventory_api_1783588091942
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
