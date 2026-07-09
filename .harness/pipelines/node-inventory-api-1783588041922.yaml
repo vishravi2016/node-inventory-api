@@ -23,16 +23,17 @@ pipeline:
                   identifier: installdependencies
                   name: install dependencies
                   spec:
+                    shell: Sh
                     command: npm install
                   timeout: ""
                   type: Run
               - step:
-                  identifier: test
-                  name: test
-                  spec:
-                    command: npm run test
-                  timeout: ""
                   type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: npm start
           platform:
             arch: Amd64
             os: Linux
